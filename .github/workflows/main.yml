@@ -25,7 +25,10 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Release AAB
-        run: ./gradlew :app:bundleRelease
+        run: ./gradlew :app:bundleRelease --stacktrace
+
+      - name: List build outputs
+        run: ls -R app/build/outputs/
 
       - name: Upload AAB Artifact
         if: always()
