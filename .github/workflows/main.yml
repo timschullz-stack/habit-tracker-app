@@ -21,9 +21,13 @@ jobs:
       - name: Build Release AAB
         run: ./gradlew :app:bundleRelease --stacktrace
 
+      - name: List all Files - DEBUG
+        run: ls -R app/build/outputs/ || echo "No outputs folder"
+
       - name: Upload AAB Artifact
         uses: actions/upload-artifact@v4
         with:
           name: habit-tracker-aab
           path: app/build/outputs/bundle/release/*.aab
+          if-no-files-found: warn
     
