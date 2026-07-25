@@ -1,4 +1,4 @@
-PluginManagment {
+pluginManagment {
     repositories {
         google()
         mavenCentral()
@@ -12,5 +12,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "HabitTracker"
+rootProject.name = "habit-tracker-app"
 include(":app")
