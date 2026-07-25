@@ -1,8 +1,6 @@
 name: Build Android AAB
 
 on:
-  push:
-    branches: [ "main" ]
   workflow_dispatch:
 
 jobs:
@@ -25,17 +23,11 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build Release AAB
-        run: ./gradlew :app:bundleRelease --stacktrace --info
-        continue-on-error: false
-
-      - name: Build Debug AAB
-        run: ./gradlew :app:bundleDebug
+        run: ./gradlew :app:bundleRelease
 
       - name: Upload AAB Artifact
-        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: app-release
-          path: '**/*.aab'
-          if-no-files-found: error
+          name: habit-tracker-aab
+          path: app/build/outputs/bundle/release/*.aab
     
